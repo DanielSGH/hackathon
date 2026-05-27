@@ -1,5 +1,8 @@
 class EnergySummary:
-    def __init__(self, total_watt_hours: float, total_cost: float, anomaly_count: int): ...
+    def __init__(self, total_watt_hours: float, total_cost: float, anomaly_count: int):
+        self.anomaly_count
+        self.total_cost
+        self.total_watt_hours
     @property
     def total_watt_hours(self) -> float: ...
     @property
