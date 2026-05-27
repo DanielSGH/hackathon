@@ -81,5 +81,9 @@ def test_metamorphic_order(energy_readings: list[EnergyReading.EnergyReading] = 
             print("fail")
             
 
-test_metamorphic_summary()
-test_metamorphic_order()
+def Qe():
+    test_metamorphic_summary()
+    test_metamorphic_order()
+
+if __name__ == "__main__":
+    Qe()
