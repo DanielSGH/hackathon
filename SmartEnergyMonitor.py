@@ -12,6 +12,20 @@ class SmartEnergyMonitor:
 
     def process_reading(self, reading: EnergyReading.EnergyReading) -> ReadingResult.ReadingResult:
         # Code to process the reading
+        result: ReadingResult.ReadingResult = ReadingResult(True, reading.watt_hours)
+
+        if reading == None:
+            result.is_accepted = False
+            raise ValueError('reading is None')
+        
+        if reading.device_id() == None or len(reading.device_id) == 0:
+            result.is_accepted = False
+            raise ValueError('device id is invalid')
+        
+        if reading.watt_hours() <= 0:
+            result.is_accepted = False
+            raise ValueError('watt_hours is invalid')
+
         self.summary = EnergySummary.EnergySummary(self.summary.total_watt_hours + reading.watt_hours, self.summary.total_cost + self._tariff_svc.get_current_tariff * reading.watt_hours, self.summary.anomaly_count)
         return ReadingResult.ReadingResult(True, self.result.watt_hours + reading.watt_hours)
 

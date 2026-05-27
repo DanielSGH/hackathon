@@ -13,6 +13,7 @@ import sys, math
 
 from EnergyReading import EnergyReading
 
+from test_smart_energy_monitor_metamorphic import test_metamorphic_order, test_metamorphic_summary
 
 
 import SmartEnergyMonitor, random, string
@@ -32,7 +33,7 @@ def test_process_reading(anomaly_threshold):
     except:
         print("failure: " + sys.exc_info()[0])
 
-    test_inputs = []
+    test_inputs: list[EnergyReading] = []
 
     for i in range(1,200):
         quadrant1 = [[0, device_id], [watt_hours, anomaly_threshold]]
@@ -63,6 +64,8 @@ def test_process_reading(anomaly_threshold):
             print("Error: " + sys.exc_info()[0])
 
         # print(device_id, watt_hours)
+        test_metamorphic_order(test_inputs)
+        test_metamorphic_summary(test_inputs)
 
 
 if __name__ == '__main__':
