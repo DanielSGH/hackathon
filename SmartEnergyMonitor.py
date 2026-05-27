@@ -12,7 +12,7 @@ class SmartEnergyMonitor:
 
     def process_reading(self, reading: EnergyReading.EnergyReading) -> ReadingResult.ReadingResult:
         # Code to process the reading
-        self.summary = EnergySummary.EnergySummary(self.summary.total_watt_hours + reading.watt_hours, self.summary.total_cost, self.summary.anomaly_count)
+        self.summary = EnergySummary.EnergySummary(self.summary.total_watt_hours + reading.watt_hours, self.summary.total_cost + self._tariff_svc.get_current_tariff * reading.watt_hours, self.summary.anomaly_count)
         return ReadingResult.ReadingResult(True, self.result.watt_hours + reading.watt_hours)
 
     def get_summary(self) -> EnergySummary.EnergySummary:
