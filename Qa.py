@@ -21,9 +21,9 @@ def generateLegalString(length):
 
 def inputSpacePartitioning():
     
-    tariff_service = TariffService
-    alert_service = AlertService
-    smart_energy_monitor = SmartEnergyMonitor(tariff_service, alert_service ,100 )
+    tariff_service = TariffService.TariffService()
+    alert_service = AlertService.Alertervice()
+    smart_energy_monitor = SmartEnergyMonitor.SmartEnergyMonitor(tariff_service, alert_service ,100 )
 
     device_id_input = ["legal", "nonlegal"]
     # device_id_input.append(generateLegalString(random.randint(0,100)))
